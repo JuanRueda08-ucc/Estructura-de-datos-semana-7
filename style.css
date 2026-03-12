@@ -1,0 +1,583 @@
+/* ============================================================
+   style.css — Store Order Management Workflow System
+   ============================================================
+   Dark-themed, modern CSS with gradient accents and smooth
+   animations. No CSS frameworks used — pure vanilla CSS.
+   ============================================================ */
+
+/* ======================== RESET ======================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================== ROOT VARIABLES ======================== */
+:root {
+  /* Dark Theme Colors */
+  --bg-primary: #0f1117;
+  --bg-secondary: #1a1d2e;
+  --bg-card: #1e2235;
+  --bg-card-hover: #252a40;
+  --bg-input: #161928;
+
+  /* Text Colors */
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0b8;
+  --text-muted: #6b7194;
+
+  /* Accent Gradients */
+  --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --gradient-success: linear-gradient(135deg, #10b981, #22c55e);
+  --gradient-danger: linear-gradient(135deg, #ef4444, #f97316);
+  --gradient-header: linear-gradient(135deg, #0f1117 0%, #1a1d2e 100%);
+
+  /* Borders */
+  --border-color: #2a2f45;
+  --border-radius: 12px;
+  --border-radius-sm: 8px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* ======================== BASE ======================== */
+html {
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ======================== HEADER ======================== */
+.app-header {
+  background: var(--gradient-header);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+}
+
+.header-content {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-title h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+.header-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 0.6rem 1.2rem;
+  text-align: center;
+  min-width: 80px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ======================== MAIN ======================== */
+.app-main {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+/* ======================== CONTROLS PANEL ======================== */
+.controls-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.control-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  transition: border-color var(--transition-normal);
+}
+
+.control-card:hover {
+  border-color: #6366f1;
+}
+
+.control-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* ======================== FORM ======================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 0.6rem 0.8rem;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.form-group input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ======================== BUTTONS ======================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: #6366f1;
+}
+
+.btn-demo {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  width: 100%;
+}
+
+.btn-demo:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-advance {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.6rem;
+}
+
+.btn-advance:hover {
+  background: rgba(99, 102, 241, 0.3);
+  border-color: #6366f1;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.5rem;
+  min-width: 28px;
+}
+
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: #ef4444;
+}
+
+/* ======================== DEMO ======================== */
+.demo-text {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* ======================== SEARCH RESULT ======================== */
+.search-result {
+  margin-top: 1rem;
+}
+
+.search-result.hidden {
+  display: none;
+}
+
+.search-found {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--border-radius-sm);
+  padding: 1rem;
+}
+
+.search-found h4 {
+  color: #34d399;
+  margin-bottom: 0.5rem;
+}
+
+.search-not-found {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--border-radius-sm);
+  padding: 0.8rem;
+  color: #fca5a5;
+}
+
+/* ======================== WORKFLOW SECTION ======================== */
+.workflow-section {
+  margin-top: 1rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+/* ======================== LISTS CONTAINER ======================== */
+.lists-container {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+/* ======================== WORKFLOW COLUMN ======================== */
+.workflow-column {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.workflow-column:hover {
+  border-color: var(--column-color, #6366f1);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.08);
+}
+
+/* ======================== COLUMN HEADER ======================== */
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  border-bottom: 2px solid var(--column-color, #6366f1);
+  flex-wrap: wrap;
+}
+
+.column-icon {
+  font-size: 1.1rem;
+}
+
+.column-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.column-badge {
+  background: var(--column-color, #6366f1);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 10px;
+  min-width: 22px;
+  text-align: center;
+}
+
+/* ======================== COLUMN BODY ======================== */
+.column-body {
+  padding: 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 120px;
+}
+
+.empty-list {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 2rem 0.5rem;
+  font-style: italic;
+}
+
+/* ======================== ORDER CARD ======================== */
+.order-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: 0.6rem;
+  transition: all var(--transition-fast);
+  animation: cardSlideIn 0.3s ease;
+}
+
+.order-card:hover {
+  border-color: var(--column-color, #6366f1);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  gap: 0.3rem;
+}
+
+.order-id {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #a5b4fc;
+  font-family: 'Courier New', monospace;
+}
+
+.order-status {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+.order-details {
+  margin-bottom: 0.5rem;
+}
+
+.order-detail {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.order-detail strong {
+  color: var(--text-primary);
+}
+
+.order-actions {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.completed-badge {
+  font-size: 0.72rem;
+  color: #34d399;
+  font-weight: 600;
+}
+
+/* ======================== NOTIFICATIONS ======================== */
+.notifications-container {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 350px;
+}
+
+.notification {
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  animation: notifSlideIn 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.notification-success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.95), rgba(34, 197, 94, 0.95));
+  color: white;
+}
+
+.notification-error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.95), rgba(249, 115, 22, 0.95));
+  color: white;
+}
+
+.notification-fade {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+}
+
+@keyframes notifSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ======================== FOOTER ======================== */
+.app-footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+/* ======================== RESPONSIVE ======================== */
+@media (max-width: 1200px) {
+  .lists-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .controls-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .lists-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .lists-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+}

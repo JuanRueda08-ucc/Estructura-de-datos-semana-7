@@ -1,0 +1,50 @@
+# Walkthrough — Store Order Management Workflow System
+
+## What Was Built
+
+A complete TypeScript + Vite academic project demonstrating **Lists (Arrays)** to manage objects through a 12-stage store order workflow using OOP.
+
+## Project Structure
+
+```
+src/
+  Order.ts          ← Order entity + WorkflowStage enum (12 stages)
+  Customer.ts       ← Creates requisitions (new Orders)
+  ShoppingOffice.ts ← Requisition prep & quote review (from diagram)
+  BuyerAgent.ts     ← RFQ preparation & quote evaluation
+  Supervisor.ts     ← Quote approval & quotation review
+  Seller.ts         ← Quote/order prep, review, fulfillment, invoicing
+  ReceiveAgent.ts   ← Product delivery & payment collection
+  StoreSystem.ts    ← Central manager with 9 lists + CRUD + transitions
+  main.ts           ← UI rendering & DOM event handling
+  vite-env.d.ts     ← Vite type declarations
+index.html          ← App layout with forms + 9-column workflow grid
+style.css           ← Dark theme, cards, gradients, animations
+package.json / tsconfig.json
+```
+
+## 9 Workflow Lists (Arrays)
+
+| # | List Name | Stage |
+|---|-----------|-------|
+| 1 | `requisitionOrders` | Requisition Created |
+| 2 | `quoteRequests` | Request for Quote |
+| 3 | `quoteEvaluation` | Quote Evaluation |
+| 4 | `approvedQuotes` | Supervisor Approval |
+| 5 | `orderPreparation` | Order Preparation |
+| 6 | `orderReview` | Order Review |
+| 7 | `fulfilledOrders` | Order Fulfillment |
+| 8 | `deliveredOrders` | Product Delivery |
+| 9 | `paymentCompleted` | Customer Payment |
+
+## Key Classes
+
+- **8 OOP classes** including [ShoppingOffice](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/ShoppingOffice.ts#31-81) (identified from the process diagram)
+- **StoreSystem** manages all lists with [searchOrder()](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/StoreSystem.ts#167-189), [addOrder()](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/StoreSystem.ts#190-205), [deleteOrder()](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/StoreSystem.ts#206-233), [updateOrder()](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/StoreSystem.ts#234-258), [listOrders()](file:///c:/Users/Edwin%20Rueda/Documents/Estructura%20de%20Datos/Estructura%20de%20datos%20semana%206/src/StoreSystem.ts#259-280), plus transition methods
+- Each transition uses `findIndex()` → `splice()` → `push()` to move orders between arrays
+
+## Validation
+
+- ✅ TypeScript compiles with **zero errors** (`npx tsc --noEmit`)
+- ✅ Vite dev server running at `http://localhost:5173/`
+- All code extensively commented explaining list operations
